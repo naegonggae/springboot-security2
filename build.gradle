@@ -19,8 +19,12 @@ repositories {
 }
 
 dependencies {
+    // login했는데 ClassNotFoundException이 에러가 나면 아래에 있는것을 추가하시오
+    implementation 'nz.net.ultraq.jaxb:jaxb-utilities:2.1.0'
+
     //implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1' // token을 받기 위해
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     //runtimeOnly 'com.mysql:mysql-connector-j'
