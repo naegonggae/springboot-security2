@@ -14,7 +14,8 @@ public class UserService {
 
     public String login(String userName, String password) {
         // 인증과정 생략
-        return JwtUtil.createJwt("dal", secretKey, expiredTime);
+        return JwtUtil.createJwt(userName, secretKey, expiredTime);
+        // return JwtUtil.createJwt(userName, secretKey, expiredTime); 이렇게하면 userName이 빈칸이야
         // secretKey자리에 secretKey를 바로 쓸수 있지만 보안문제때문에 가공하는 과정을 거친다.
     }
 }

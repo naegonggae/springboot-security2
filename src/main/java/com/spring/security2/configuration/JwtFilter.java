@@ -53,11 +53,13 @@ public class JwtFilter extends OncePerRequestFilter { // token을 인증하는 �
 
 // 아래의 코드를 추가해서 문을 열었음
         //UserName token에서 꺼내기
-        String userName = "";
+        String userName = JwtUtil.getUserName(token, secretKey);
+        log.info("userName:{}", userName);
 
         // 권한 부여
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(userName, null, List.of(new SimpleGrantedAuthority("USER"))); // role은 일단 "USER"로 하드코딩
+        // uerName 받으면 컨트롤러에서 쓸수 있어. Authentication 파라미터로 받아서 Authentication.getName()
         // Detail을 넣어줍니다.
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
